@@ -132,7 +132,6 @@ class LoadTrackingAnalysis(TraceAnalysisBase):
     @TraceAnalysisBase.df_method
     @will_use_events_from(
         requires_one_event_of(*_SCHED_PELT_CFS_NAMES),
-        'sched_util_est_cfs',
         'sched_cpu_capacity',
     )
     def df_cpus_signal(self, signal, cpus: typing.Sequence[CPU]=None):
@@ -196,8 +195,7 @@ class LoadTrackingAnalysis(TraceAnalysisBase):
 
     @TraceAnalysisBase.df_method
     @will_use_events_from(
-        requires_one_event_of(*_SCHED_PELT_SE_NAMES),
-        'sched_util_est_se'
+        requires_one_event_of(*_SCHED_PELT_SE_NAMES)
     )
     def df_tasks_signal(self, signal):
         """
