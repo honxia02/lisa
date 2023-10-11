@@ -371,10 +371,8 @@ TRACE_EVENT_CONDITION(lisa__uclamp_util_se,
 		__entry->util_avg       = p->se.avg.util_avg;
 		__entry->uclamp_avg     = uclamp_rq_util_with(rq, p->se.avg.util_avg);
 
-#    if HAS_KERNEL_FEATURE(RQ_UCLAMP)
-		__entry->uclamp_min     = rq->uclamp[UCLAMP_MIN].value;
-		__entry->uclamp_max     = rq->uclamp[UCLAMP_MAX].value;
-#    endif
+		__entry->uclamp_min     = p->uclamp[UCLAMP_MIN].value;
+		__entry->uclamp_max     = p->uclamp[UCLAMP_MAX].value;
 		),
 
 	TP_printk("pid=%d comm=%s cpu=%d util_avg=%lu uclamp_avg=%lu"
